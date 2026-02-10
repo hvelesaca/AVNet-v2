@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-#from mamba_ssm import Mamba
+from mamba_ssm import Mamba
 #from huggingface_hub import hf_hub_download
 #import timm
 from lib.pvtv2 import pvt_v2_b2_
@@ -132,9 +132,9 @@ class ConvBlock(nn.Module):
         self.act_branch1 = nn.SiLU()
       
         # Mamba
-        #self.use_mamba = use_mamba
-        #if self.use_mamba:
-        #    self.mamba = Mamba(d_model=out_channels, d_state=mamba_dim, d_conv=4, expand=2)
+        self.use_mamba = use_mamba
+        if self.use_mamba:
+            self.mamba = Mamba(d_model=out_channels, d_state=mamba_dim, d_conv=4, expand=2)
 
         # Branch 2
         self.linear1_branch2 = nn.Linear(out_channels, out_channels)
@@ -171,8 +171,8 @@ class ConvBlock(nn.Module):
         branch1 = self.act_branch1(branch1)
       
         # Aplicar Mamba solo si está activo
-        #if self.use_mamba:
-        #    branch1 = self.mamba(branch1)
+        if self.use_mamba:
+            branch1 = self.mamba(branch1)
       
         # Branch 2
         branch2 = self.linear1_branch2(x)
