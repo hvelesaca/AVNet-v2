@@ -119,9 +119,9 @@ def val(model, epoch, save_path, writer, opt, device):
 
     # test_dataset debe devolver tensores: image:1x3xHxW, thermal:1x3xHxW, gt:1x1xHxW
     test_data = test_dataset(
-        image_root=os.path.join(opt.test_path, 'Imgs') + '/',
-        thermal_root=os.path.join(opt.test_path, 'Thermal') + '/',
-        gt_root=os.path.join(opt.test_path, 'GT') + '/',
+        image_root=os.path.join(opt.val_path, 'Imgs') + '/',
+        thermal_root=os.path.join(opt.val_path, 'Thermal') + '/',
+        gt_root=os.path.join(opt.val_path, 'GT') + '/',
         testsize=opt.trainsize
     )
 
@@ -354,7 +354,7 @@ if __name__ == '__main__':
     parser.add_argument('--decay_rate', type=float, default=0.1, help='lr decay rate')
     parser.add_argument('--decay_epoch', type=int, default=100, help='lr decay every n epochs')
     parser.add_argument('--train_path', type=str, default=f'../../Datasets/{dataset}/train', help='train dataset path')
-    parser.add_argument('--test_path', type=str, default=f'../../Datasets/{dataset}/val', help='val dataset path')
+    parser.add_argument('--val_path', type=str, default=f'../../Datasets/{dataset}/val', help='val dataset path')
     parser.add_argument('--save_path', type=str, default=f'./model_pth/AGNet_{dataset}/')
     parser.add_argument('--epoch_save', type=int, default=1, help='save every n epochs')
     parser.add_argument('--log_every', type=int, default=5, help='steps between train visual logs')
