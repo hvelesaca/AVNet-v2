@@ -71,7 +71,7 @@ def log_train_images(writer, step, images, thermals, gts, preds,
         grid_pr = vutils.make_grid(pr_vis, nrow=4)
 
         writer.add_image('train/RGB', grid_img, global_step=step)
-        writer.add_image('train/Thermal', grid_th, global_step=step)
+        writer.add_image('train/NIR', grid_th, global_step=step)
         writer.add_image('train/GT', grid_gt, global_step=step)
         writer.add_image('train/Pred', grid_pr, global_step=step)
 
@@ -85,7 +85,7 @@ def log_val_images(writer, epoch, image, thermal, gt, pred,
     img_vis = denorm(image, *rgb_stats)
     th_vis = denorm(thermal, *th_stats)
     writer.add_image('val/RGB', img_vis[0], global_step=epoch)
-    writer.add_image('val/Thermal', th_vis[0], global_step=epoch)
+    writer.add_image('val/NIR', th_vis[0], global_step=epoch)
     writer.add_image('val/GT', gt[0], global_step=epoch)
     writer.add_image('val/Pred', pred[0], global_step=epoch)
 
@@ -120,7 +120,7 @@ def val(model, epoch, save_path, writer, opt, device):
     # test_dataset debe devolver tensores: image:1x3xHxW, thermal:1x3xHxW, gt:1x1xHxW
     test_data = test_dataset(
         image_root=os.path.join(opt.val_path, 'Imgs') + '/',
-        thermal_root=os.path.join(opt.val_path, 'Thermal') + '/',
+        thermal_root=os.path.join(opt.val_path, 'NIR') + '/',
         gt_root=os.path.join(opt.val_path, 'GT') + '/',
         testsize=opt.trainsize
     )
@@ -397,7 +397,7 @@ if __name__ == '__main__':
 
     image_root = f'{opt.train_path}/Imgs/'
     gt_root = f'{opt.train_path}/GT/'
-    thermal_root = f'{opt.train_path}/Thermal/'
+    thermal_root = f'{opt.train_path}/NIR/'
 
     print("image_root: ", image_root)
     print("gt_root: ", gt_root)
