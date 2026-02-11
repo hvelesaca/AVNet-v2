@@ -255,7 +255,9 @@ class CamouflageDetectionNet(nn.Module):
         self.backbone = pvt_v2_b2_()
       
         if pretrained:
-            self._load_backbone_weights('C:/Respaldo/Henry/Proyecto Camuflaje/Codigo/AGNet-main/pretrained_pvt/pvt_v2_b2.pth')
+            #self._load_backbone_weights('C:/Respaldo/Henry/Proyecto Camuflaje/Codigo/AGNet-main/pretrained_pvt/pvt_v2_b2.pth')
+            self._load_backbone_weights('/kaggle/input/pretrained_pvt_v2_b2/pytorch/default/1/pvt_v2_b2.pth')
+            
 
         out_channels = [64, 128, 320, 512] 
 
