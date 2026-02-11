@@ -63,7 +63,7 @@ def main():
         parser.add_argument('--testsize', type=int, default=416, help='testing size (debe coincidir con train)')
         parser.add_argument('--pth_path', type=str, default=f'C:/Respaldo/Henry/Proyecto Camuflaje/Codigo/AGNet-main/model_pth/AGNet_IguanaDataset/{idx}_AGNet-PVT.pth')
         parser.add_argument('--dataset', type=str, default='M3FD')
-        parser.add_argument('--data_root', type=str, default='../../Datasets', help='raíz de datasets (coincidir mayúsculas/minúsculas)')
+        parser.add_argument('--test_path', type=str, default='../../Datasets', help='raíz de datasets (coincidir mayúsculas/minúsculas)')
         parser.add_argument('--save_vis', action='store_true', default=True, help='guardar grid RGB|Thermal|GT|Pred')
         parser.add_argument('--vis_subdir', type=str, default='vis', help='subcarpeta para guardar visualizaciones')
         args = parser.parse_args()
@@ -81,7 +81,7 @@ def main():
         
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        data_path = os.path.join(args.data_root, args.dataset, 'test')
+        data_path = os.path.join(args.test_path, 'test')
         save_dir_root = f'./results_/{os.path.basename(os.path.dirname(args.pth_path))}_{idx}/{args.dataset}'
         os.makedirs(save_dir_root, exist_ok=True)
         if args.save_vis:
