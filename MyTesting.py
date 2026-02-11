@@ -54,9 +54,9 @@ def make_vis_grid(image, thermal, gt, pred,
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--testsize', type=int, default=416, help='testing size (debe coincidir con train)')
+    parser.add_argument('--testsize', type=int, default=385, help='testing size (debe coincidir con train)')
     parser.add_argument('--pth_path', type=str, default='C:/Respaldo/Henry/Proyecto Camuflaje/Codigo/AGNet-main/model_pth/AGNet_IguanaDataset/Net_epoch_best.pth')
-    parser.add_argument('--dataset', type=str, default='IguanaDataset')
+    parser.add_argument('--dataset', type=str, default='M3FD')
     parser.add_argument('--test_path', type=str, default='../../Datasets', help='raíz de datasets (coincidir mayúsculas/minúsculas)')
     parser.add_argument('--save_vis', action='store_true', help='guardar grid RGB|Thermal|GT|Pred')
     parser.add_argument('--vis_subdir', type=str, default='vis', help='subcarpeta para guardar visualizaciones')
