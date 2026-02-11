@@ -338,8 +338,8 @@ def load_matched_state_dict(model, state_dict, print_stats=True):
 
 
 if __name__ == '__main__':
-    #dataset = 'M3fd6'
-    dataset = 'IguanaDataset'
+    dataset = 'M3fd6'
+    #dataset = 'IguanaDataset'
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--epoch', type=int, default=200, help='epoch number')
