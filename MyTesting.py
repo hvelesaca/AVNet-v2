@@ -86,7 +86,7 @@ def main():
     # Rutas de test
     image_root = os.path.join(data_path, 'Imgs') + '/'
     gt_root = os.path.join(data_path, 'GT') + '/'
-    thermal_root = os.path.join(data_path, 'Thermal') + '/'
+    thermal_root = os.path.join(data_path, 'NIR') + '/'
     print('Test roots:', image_root, gt_root, thermal_root)
 
     # Dataset de test: debe devolver (image, thermal, gt, name)
